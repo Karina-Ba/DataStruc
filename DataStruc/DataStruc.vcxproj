@@ -18,6 +18,20 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BSTree.cpp" />
+    <ClCompile Include="BSTreeNode.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Selection.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BSTree.h" />
+    <ClInclude Include="BSTreeNode.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="Selection.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FA29A8CA-F18F-4929-B818-A04A8A0154A0}</ProjectGuid>
