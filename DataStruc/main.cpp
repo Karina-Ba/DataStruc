@@ -12,7 +12,7 @@
 // by amount of comparisons each function did.                                       //
 //***********************************************************************************//
 #include "Utils.h"
-#include "Selection.h"
+#include "Print.h"
 
 int main()
 {
@@ -21,18 +21,18 @@ int main()
 
 	cin >> n;
 
-	Selection selection(n);
-	selection.readUserInput();
+	Print print(n);
+	print.readUserInput();
 
-	res = selection.RandSelection(); // Rand selection algorithm
+	res = print.RandSelection(); // Rand selection algorithm
 	cout << endl << *res << endl;
-	cout << "RandSelection: " << selection.getNumComparisons() << " comparisons" << endl;
+	cout << "RandSelection: " << print.getNumComparisons() << " comparisons" << endl;
 
-	res = selection.selectHeap(); // Select heap algorithm
+	res = print.selectHeap(); // Select heap algorithm
 	cout << endl << *res << endl;
-	cout << "selectHeap: " << selection.getNumComparisons() << " comparisons" << endl;
+	cout << "selectHeap: " << print.getNumComparisons() << " comparisons" << endl;
 
-	res = selection.BST(); // BST algorithm
+	res = print.BST(); // BST algorithm
 	cout << endl << *res << endl;
-	cout << "BST: " << selection.getNumComparisons() << " comparisons" << endl;
+	cout << "BST: " << print.getNumComparisons() << " comparisons" << endl;
 }

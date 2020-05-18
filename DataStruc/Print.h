@@ -1,10 +1,10 @@
-#ifndef __SELECTION_
-#define __SELECTION_
+#ifndef __PRINT_
+#define __PRINT_
 
 #include "Utils.h"
 #include "BSTree.h"
 
-class Selection
+class Print
 {
 	Person** m_arr;
 	int      m_arrSize;
@@ -18,13 +18,13 @@ class Selection
 
 public:
 	//C'tors
-	 Selection(int size);
-	 Selection(const Selection& s) = delete;
-	 Selection(Selection&& s) = delete;
-	~Selection();
+	 Print(int size);
+	 Print(const Print& s) = delete;
+	 Print(Print&& s) = delete;
+	~Print();
 
 	void readUserInput();
 
 };
 
-#endif //!__SELECTION_
+#endif //!__PRINT_

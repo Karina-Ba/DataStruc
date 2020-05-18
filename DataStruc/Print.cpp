@@ -1,14 +1,14 @@
-#include "Selection.h"
+#include "Print.h"
 
 //--------------------------------------------------------------------------------//
-Selection::Selection(int size)
+Print::Print(int size)
 {
 	this->m_arrSize = size;
 	this->m_numOfComp = this->m_k = 0;
 	this->m_arr = new Person*[size]; // Allocate array
 }
 //--------------------------------------------------------------------------------//
-Selection::~Selection()
+Print::~Print()
 {
 	for (int i = 0; i < this->m_arrSize; i++)
 	{
@@ -18,7 +18,7 @@ Selection::~Selection()
 	delete[] this->m_arr;
 }
 //--------------------------------------------------------------------------------//
-void Selection::readUserInput()
+void Print::readUserInput()
 {
 	int id, k;
 	string name;
@@ -51,7 +51,7 @@ void Selection::readUserInput()
 	this->m_k = k;
 }
 //--------------------------------------------------------------------------------//
-bool Selection::idExists(int amount, int id) const
+bool Print::idExists(int amount, int id) const
 {
 	for (int i = 0; i < amount; i++)
 	{
@@ -64,7 +64,7 @@ bool Selection::idExists(int amount, int id) const
 	return false;
 }
 //--------------------------------------------------------------------------------//
-void Selection::freeMemory(int amount)
+void Print::freeMemory(int amount)
 {
 	for (int i = 0; i < amount; i++)
 	{
@@ -74,7 +74,7 @@ void Selection::freeMemory(int amount)
 	delete[] this->m_arr;
 }
 //--------------------------------------------------------------------------------//
-bool Selection::isKInRange(int k) const
+bool Print::isKInRange(int k) const
 {
 	return (1 <= k && k <= this->m_arrSize);
 }

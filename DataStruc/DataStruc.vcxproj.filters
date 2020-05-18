@@ -27,7 +27,7 @@
     <ClCompile Include="BSTreeNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Selection.cpp">
+    <ClCompile Include="Print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,7 +44,7 @@
     <ClInclude Include="BSTreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Selection.h">
+    <ClInclude Include="Print.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
