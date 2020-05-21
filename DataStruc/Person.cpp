@@ -42,6 +42,11 @@ bool Person::operator>(const Person & other) const
 	return (!(*this < other) && !(*this == other));
 }
 //--------------------------------------------------------------------------------//
+bool Person::operator>=(const Person & other) const
+{
+	return (*this == other || *this > other);
+}
+//--------------------------------------------------------------------------------//
 const Person & Person::operator=(const Person & other)
 {
 	if (this != &other)

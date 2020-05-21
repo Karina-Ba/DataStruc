@@ -1,15 +1,13 @@
 #ifndef __BSTREE_
 #define __BSTREE_
 
-#include "Utils.h"
 #include "BSTreeNode.h"
 
 class BSTree
 {
 private:
 	BSTreeNode* m_root;
-
-	static int CMP_NUM_BST; //Comparisons for binary search tree
+	int m_numOfCompBST; //Comparisons for binary search tree
 
 public:
 	 BSTree();
@@ -20,14 +18,14 @@ public:
 	//All the tree functions excluding pred and succ
 	BSTreeNode* Find (int key);
 	BSTreeNode* FindK(int index);
-	void Insert (int key, int plc, Person* data);
+	void Insert (int key, Person* data);
 	void Delete (int key);
 	BSTreeNode* Min(BSTreeNode* root, BSTreeNode* parent); //Parent var is for returning the parent
 	BSTreeNode* Max(BSTreeNode* root, BSTreeNode* parent);
-	void PrintTree();
+	void PrintTree(int k);
 
 	//Get functions
-	static int getCmpNumBST();
+	int getNumOfCompBST();
 
 };
 

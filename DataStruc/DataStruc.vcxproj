@@ -23,13 +23,15 @@
     <ClCompile Include="BSTreeNode.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
-    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="PrintSmallerThanKElements.cpp" />
+    <ClCompile Include="SortedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BSTree.h" />
     <ClInclude Include="BSTreeNode.h" />
     <ClInclude Include="Person.h" />
-    <ClInclude Include="Print.h" />
+    <ClInclude Include="PrintSmallerThanKElements.h" />
+    <ClInclude Include="SortedList.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -113,7 +115,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>

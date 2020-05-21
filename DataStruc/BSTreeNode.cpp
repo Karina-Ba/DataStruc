@@ -6,14 +6,12 @@ BSTreeNode::BSTreeNode()
 	this->m_left     = this->m_left = nullptr;
 	this->m_data     = nullptr;
 	this->m_key      = 0;
-	this->m_plc      = 0;
 	this->m_children = 0;
 }
 //--------------------------------------------------------------------------------//
-BSTreeNode::BSTreeNode(int key, int plc, Person* data, BSTreeNode * left, BSTreeNode * right)
+BSTreeNode::BSTreeNode(int key, Person* data, BSTreeNode * left, BSTreeNode * right)
 {
 	this->m_key      = key;
-	this->m_plc      = plc;
 	this->m_data     = data;
 	this->m_left     = left;
 	this->m_right    = right;
@@ -43,23 +41,26 @@ BSTreeNode::~BSTreeNode()
 	}
 }
 //--------------------------------------------------------------------------------//
-int BSTreeNode::getPlc() const
+void BSTreeNode::InOrder(int k)
 {
-	return this->m_plc;
-}
-//--------------------------------------------------------------------------------//
-void BSTreeNode::InOrder()
-{
-	if (this->m_left)
+	if (this->m_data->getId() >= k)
 	{
-		this->m_left->InOrder();
+		return;
 	}
 
-	cout << this->m_data;
-
-	if (this->m_right)
+	else 
 	{
-		this->m_right->InOrder();
+		if (this->m_left)
+		{
+			this->m_left->InOrder(k);
+		}
+
+		cout << *this->m_data << endl;
+
+		if (this->m_right)
+		{
+			this->m_right->InOrder(k);
+		}
 	}
 }
 //--------------------------------------------------------------------------------//

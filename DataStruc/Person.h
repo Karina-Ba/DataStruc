@@ -28,6 +28,7 @@ public:
 	bool operator <  (const Person& other)const;
 	bool operator == (const Person& other)const;
 	bool operator >  (const Person& other)const;
+	bool operator >=  (const Person& other)const;
 	const Person& operator=(const Person& other);
 	friend ostream& operator << (ostream& os, const Person& person);
 

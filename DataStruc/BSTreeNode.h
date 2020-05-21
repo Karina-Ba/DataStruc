@@ -1,14 +1,12 @@
 #ifndef __BSTREE_NODE_
 #define __BSTREE_NODE_
 
-#include "Utils.h"
 #include "Person.h"
 
 class BSTreeNode
 {
 private:
 	int         m_key;
-	int         m_plc;
 	int         m_children;
 
 	Person*     m_data;
@@ -20,16 +18,15 @@ private:
 public:
 	 //C'tors
 	 BSTreeNode();
-	 BSTreeNode(int key, int plc, Person* data, BSTreeNode* left, BSTreeNode* right);
+	 BSTreeNode(int key, Person* data, BSTreeNode* left, BSTreeNode* right);
 	 BSTreeNode(const BSTreeNode& other) = delete;
 	 BSTreeNode(BSTreeNode&& other)      = delete;
 	~BSTreeNode();
 
-	//Function returns the variable place
-	int getPlc () const;
+
 
 	//Generic printing functions
-	void InOrder  ();
+	void InOrder  (int k);
 	void PreOrder ();
 	void PostOrder();
 

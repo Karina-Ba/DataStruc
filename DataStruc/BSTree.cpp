@@ -1,6 +1,5 @@
 #include "BSTree.h"
 
-int BSTree::CMP_NUM_BST = 0;
 //--------------------------------------------------------------------------------//
 BSTree::BSTree()
 {
@@ -21,19 +20,19 @@ BSTreeNode* BSTree::Find(int key)
 	{
 		if (key == temp->m_key) //If the key in temp is the same as wanted, return temp and add one to comparison count
 		{
-			++CMP_NUM_BST;
+			++m_numOfCompBST;
 			return temp;
 		}
 
 		else if (key < temp->m_key) //If the key is smaller than the one in the temp, forward temp to be left child and add two to comparison, one for before one for this
 		{
-			CMP_NUM_BST += 2;
+			m_numOfCompBST += 2;
 			temp = temp->m_left;
 		}
 
 		else //If reached this point, add two to comparison for conditions above and forward temp to right child
 		{
-			CMP_NUM_BST += 2;
+			m_numOfCompBST += 2;
 			temp = temp->m_right;
 		}
 	}
@@ -78,7 +77,7 @@ BSTreeNode * BSTree::FindK(int index) //Find the k'th otem in the tree (index po
 	return temp; //Haven't found so return is nullptr (temp because we're out of the loop when temp is nullptr)
 }
 //--------------------------------------------------------------------------------//
-void BSTree::Insert(int key, int plc, Person* data)
+void BSTree::Insert(int key, Person* data)
 { //Did not check if key exists because ID is unique
 	BSTreeNode* temp   = this->m_root;
 	BSTreeNode* parent = this->m_root;
@@ -99,10 +98,10 @@ void BSTree::Insert(int key, int plc, Person* data)
 			temp = temp->m_right;
 		}
 		parent->m_children++;
-		++CMP_NUM_BST; //Forward comparisons because of condition
+		++m_numOfCompBST; //Forward comparisons because of condition
 	}
 
-	newNode = new BSTreeNode(key, plc, data, nullptr, nullptr); //Create the node
+	newNode = new BSTreeNode(key, data, nullptr, nullptr); //Create the node
 
 	if (!parent) //If the parent is nullptr, set the root to be new node
 	{
@@ -113,12 +112,12 @@ void BSTree::Insert(int key, int plc, Person* data)
 	else if (key < parent->m_key) //If the key is smaller than parent's key, input as left child and add one to comparisons
 	{
 		parent->m_left = newNode;
-		++CMP_NUM_BST;
+		++m_numOfCompBST;
 	}
 	 
 	else //Else key is bigger or the same as parent, add as right child and add one to comparions for previous condition
 	{
-		++CMP_NUM_BST;
+		++m_numOfCompBST;
 		parent->m_right = newNode;
 	}
 
@@ -150,7 +149,7 @@ void BSTree::Delete(int key)
 			temp = temp->m_right;
 		}
 
-		++CMP_NUM_BST;
+		++m_numOfCompBST;
 		parent->m_children--;
 	}
 
@@ -189,7 +188,6 @@ void BSTree::Delete(int key)
 		{
 			temp->m_key  = max->m_key;
 			temp->m_data = max->m_data;
-			temp->m_plc  = max->m_plc;
 			--temp->m_children;
 
 			if (parent->m_left == max) //Same as with 1 or 0 children
@@ -247,16 +245,17 @@ BSTreeNode * BSTree::Max(BSTreeNode * root, BSTreeNode * parent) //Find max
 	return temp;
 }
 //--------------------------------------------------------------------------------//
-void BSTree::PrintTree()
+void BSTree::PrintTree(int k)
 {
 	if (this->m_root)
 	{
-		this->m_root->InOrder();
+		this->m_root->InOrder(k);
 	}
+	cout << endl;
 }
 //--------------------------------------------------------------------------------//
-int BSTree::getCmpNumBST() 
+int BSTree::getNumOfCompBST()
 {
-	return CMP_NUM_BST;
+	return this->m_numOfCompBST;
 }
 //--------------------------------------------------------------------------------//
