@@ -12,11 +12,12 @@ class PrintSmallerThanKElements
 	int      m_numOfComp; //Comparisons for printing elements that are smaller than K.
 
 	//Help functions
-	bool idExists   (int amount, int id) const;
-	void freeMemory (int amount);
+	bool idExists(int amount, int id) const;
+	void freeMemory(int amount);
 	int  partition(int left, int right);
 	void quickSort(int left, int right);
-	
+	void swap(Person** a, Person** b) const;
+
 public:
 	//C'tors
 	 PrintSmallerThanKElements (int size);

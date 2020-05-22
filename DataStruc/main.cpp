@@ -22,7 +22,7 @@ int main()
 
 	PrintSmallerThanKElements print(n);
 	print.readUserInput();
-	
+	srand((unsigned)time(NULL));
 	print.NaivePrint(); // Naive (Try each element) algorithm
 	//cout << endl << *res << endl;
 	//cout << "Naive print: " << print.getNumComparisons() << " comparisons" << endl;

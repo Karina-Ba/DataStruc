@@ -108,43 +108,33 @@ void PrintSmallerThanKElements::freeMemory(int amount)
 //--------------------------------------------------------------------------------//
 int PrintSmallerThanKElements::partition(int left, int right)
 {
-//Partition algorithem like the second algorithem from the book, meaning it has more conditions that are strangers to each other concluding in a bigger
-// amount of comparisons for the randSelection but I chose this algorithem because of it's readibility, as they both have ?(n) run time efficiency
+	int randIndex = (rand() % (right - left + 1)) + left; // Get random index for pivot
+	int lastSmallerElement = left - 1; // Initialize the index of the last element that smaller than pivot  
+	int pivot; // Pivot
 
-	int pivot = left;
+	swap(&this->m_arr[right], &this->m_arr[randIndex]); // Put the random pivot at the end of the array
+	pivot = this->m_arr[right]->getId(); // Set the pivot
 
-	if(left < right) //If left is smaller than right, add one to left
-		++left;
-
-	while (left < right) //As long as they are different
+	for (int i = left; i < right; i++)
 	{
-		++this->m_numOfComp; //Adding one to comparisons for the condition after them
-		if (*(m_arr[left]) > *(m_arr[right])) //If left item bigger than right, swap them (using the swap in the library)
+		// The current element is smaller than the pivot  
+		if (this->m_arr[i]->getId() < pivot)
 		{
-			swap(m_arr[left], m_arr[right]);
+			lastSmallerElement++; // Increment the index of the last smaller element  
+			swap(&this->m_arr[lastSmallerElement], &this->m_arr[i]);
 		}
-		++this->m_numOfComp;
-		if (*(m_arr[left]) < *(m_arr[pivot])) //If left is smaller than the item in pivot, forward left
-		{
-			left++;
-		}
-		++this->m_numOfComp;
-		if (*(m_arr[right]) > *(m_arr[pivot])) //If right is bigger than pivot, take right back one
-		{
-			--right;
-		}
+		++this->m_numOfComp;; // Count number comparisons of RandSelection algorithm
 	}
+	swap(&this->m_arr[lastSmallerElement + 1], &this->m_arr[right]); // Put the pivot at his correct location
 
-	++this->m_numOfComp;
-
-	if (*(m_arr[left]) > *(m_arr[pivot])) //If the last left is bigger than pivot, take one step back which is conditionally smaller than pivot item
-	{
-		left--;
-	}
-	swap(m_arr[pivot], m_arr[left]); //Swap them
-	pivot = left;
-
-	return pivot;
+	return (lastSmallerElement + 1); // Location of pivot
+}
+//--------------------------------------------------------------------------------//
+void PrintSmallerThanKElements::swap(Person** a, Person** b) const
+{
+	Person* temp = *a;
+	*a = *b;
+	*b = temp;
 }
 //--------------------------------------------------------------------------------//
 void PrintSmallerThanKElements::quickSort(int left, int right)

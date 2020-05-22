@@ -1,6 +1,6 @@
 #include "BSTreeNode.h"
 
-int  BSTreeNode::m_numOfCompsNode = 0;
+int  BSTreeNode::NUM_COMP_NODE = 0;
 //--------------------------------------------------------------------------------//
 BSTreeNode::BSTreeNode()
 {
@@ -49,7 +49,7 @@ void BSTreeNode::InOrder(int k)
 		this->m_left->InOrder(k);
 	}
 
-	++BSTreeNode::m_numOfCompsNode;
+	++BSTreeNode::NUM_COMP_NODE;
 	if (this->m_data->getId() >= k)
 	{
 		return;

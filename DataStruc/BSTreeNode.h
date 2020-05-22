@@ -8,11 +8,12 @@ class BSTreeNode
 private:
 	int         m_key;
 	int         m_children;
-	static int  m_numOfCompsNode;
 
 	Person*     m_data;
 	BSTreeNode* m_left;
 	BSTreeNode* m_right;
+
+	static int  NUM_COMP_NODE;
 
 	friend class BSTree; //BSTree should be able to use the private variables
 
@@ -24,13 +25,10 @@ public:
 	 BSTreeNode(BSTreeNode&& other)      = delete;
 	~BSTreeNode();
 
-
-
 	//Generic printing functions
 	void InOrder  (int k);
 	void PreOrder ();
 	void PostOrder();
-
 };
 
 #endif //!__BSTREE_NODE_
