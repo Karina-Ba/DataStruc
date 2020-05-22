@@ -8,6 +8,7 @@ class BSTreeNode
 private:
 	int         m_key;
 	int         m_children;
+	static int  m_numOfCompsNode;
 
 	Person*     m_data;
 	BSTreeNode* m_left;

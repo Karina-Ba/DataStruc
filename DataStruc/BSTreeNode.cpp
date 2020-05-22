@@ -1,21 +1,22 @@
 #include "BSTreeNode.h"
 
+int  BSTreeNode::m_numOfCompsNode = 0;
 //--------------------------------------------------------------------------------//
 BSTreeNode::BSTreeNode()
 {
-	this->m_left     = this->m_left = nullptr;
-	this->m_data     = nullptr;
-	this->m_key      = 0;
-	this->m_children = 0;
+	this->m_left		  = this->m_left = nullptr;
+	this->m_data		  = nullptr;
+	this->m_key			  = 0;
+	this->m_children	  = 0;
 }
 //--------------------------------------------------------------------------------//
 BSTreeNode::BSTreeNode(int key, Person* data, BSTreeNode * left, BSTreeNode * right)
 {
-	this->m_key      = key;
-	this->m_data     = data;
-	this->m_left     = left;
-	this->m_right    = right;
-	this->m_children = 0;
+	this->m_key			  = key;
+	this->m_data		  = data;
+	this->m_left		  = left;
+	this->m_right		  = right;
+	this->m_children	  = 0;
 
 	if (left) //If there's left child add his amount of children to current node plus 1 for the left child itself
 	{
@@ -43,24 +44,22 @@ BSTreeNode::~BSTreeNode()
 //--------------------------------------------------------------------------------//
 void BSTreeNode::InOrder(int k)
 {
+	if (this->m_left)
+	{
+		this->m_left->InOrder(k);
+	}
+
+	++BSTreeNode::m_numOfCompsNode;
 	if (this->m_data->getId() >= k)
 	{
 		return;
 	}
 
-	else 
+	cout << *this->m_data << endl;
+
+	if (this->m_right)
 	{
-		if (this->m_left)
-		{
-			this->m_left->InOrder(k);
-		}
-
-		cout << *this->m_data << endl;
-
-		if (this->m_right)
-		{
-			this->m_right->InOrder(k);
-		}
+		this->m_right->InOrder(k);
 	}
 }
 //--------------------------------------------------------------------------------//

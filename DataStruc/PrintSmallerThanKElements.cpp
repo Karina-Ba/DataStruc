@@ -165,15 +165,16 @@ void PrintSmallerThanKElements::NaivePrint()
 
 	for (int i = 0; i < this->m_arrSize; ++i)
 	{
+		++this->m_numOfComp;
 		if (this->m_arr[i]->getId() < this->m_k)
 		{
-			++this->m_numOfComp;
 			lst.addItem(this->m_arr[i]);
 		}
 	}
 	this->m_numOfComp += lst.getNumOfCompLst();
+	cout << endl;
 	cout << lst << endl;
-	cout << "NaivePrint: " << this->m_numOfComp << " comparisons" << endl;
+	cout << "NaivePrint: " << this->m_numOfComp << " comparisons" << endl << endl;
 	this->m_numOfComp = 0;
 }
 //--------------------------------------------------------------------------------//
@@ -186,9 +187,10 @@ void PrintSmallerThanKElements::BSTPrint()
 		tree.Insert(this->m_arr[i]->getId(), this->m_arr[i]);
 	}
 
-	this->m_numOfComp += tree.getNumOfCompBST();
 	tree.PrintTree(this->m_k);
-	cout << "BSTPrint: " << this->m_numOfComp << " comparisons" << endl;
+	this->m_numOfComp += tree.getNumOfCompBST();
+	cout << endl;
+	cout << "BSTPrint: " << this->m_numOfComp << " comparisons" << endl << endl;
 	this->m_numOfComp = 0;
 }
 //--------------------------------------------------------------------------------//
@@ -211,7 +213,7 @@ void PrintSmallerThanKElements::PrintBySort()
 	}
 	
 	cout << endl;
-	cout << "PrintBySort: " << this->m_numOfComp << " comparisons" << endl;
+	cout << "PrintBySort: " << this->m_numOfComp << " comparisons" << endl << endl;
 	this->m_numOfComp = 0;
 
 }

@@ -250,6 +250,7 @@ void BSTree::PrintTree(int k)
 	if (this->m_root)
 	{
 		this->m_root->InOrder(k);
+		this->m_numOfCompBST += this->m_root->m_numOfCompsNode;
 	}
 	cout << endl;
 }
