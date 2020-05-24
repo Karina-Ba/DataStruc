@@ -61,26 +61,51 @@ void PrintSmallerThanKElements::setNumComparisons(int numOfComp)
 void PrintSmallerThanKElements::readUserInput()
 {
 	int id;
-	string name;
+	char _name[MAX_LEN_NAME];
+	bool twoNameFlag = false;
 
 	for (int i = 0; i < this->m_arrSize; ++i)
 	{
 		cin >> id;
 
-		if (idExists(i, id)) // Duplicated id - invalid input
+		if (idExists(i, id) || id <= 0) // Duplicated id or nonexistent id - invalid input
+			invalidInput(i);
+		
+		cin.ignore(); // Ignore the space
+		int index = 0;
+		cin >> _name[index];
+
+		while (_name[index] != '\n')
 		{
-			cout << "invalid input" << endl;
-			freeMemory(i);
-			exit(INVALID_INPUT_ERROR);
+			if ((_name[index] < 'a' || _name[index] > 'z') && (_name[index] < 'A' || _name[index] > 'Z'))
+			{
+				if (_name[index] == ' ' && !twoNameFlag) //Raise two strings flag and last name flag
+					twoNameFlag = true;
+				else
+					invalidInput(i);
+			}
+			++index;
+			_name[index] = getchar();
 		}
 
-		cin.ignore(); // Ignore the space
-		getline(cin, name);
+		if (!twoNameFlag || index == 0) //No 2 strings for first and last name or no string at all
+			invalidInput(i);
 
+		_name[index] = '\0';
+		string name(_name);
 		this->m_arr[i] = new Person(id, name); // Allocate element
+		twoNameFlag = false;
 	}
 
 	cin >> this->m_k;
+	cout << endl << endl;
+}
+//--------------------------------------------------------------------------------//
+void PrintSmallerThanKElements::invalidInput(int index)
+{
+	cout << "invalid input" << endl;
+	freeMemory(index);
+	exit(INVALID_INPUT_ERROR);
 }
 //--------------------------------------------------------------------------------//
 bool PrintSmallerThanKElements::idExists(int amount, int id) const
@@ -153,17 +178,15 @@ void PrintSmallerThanKElements::NaivePrint()
 {
 	SortedList lst;
 
-	for (int i = 0; i < this->m_arrSize; ++i)
+	for (int i = 0; i < this->m_arrSize; ++i) //Go over the array
 	{
 		++this->m_numOfComp;
-		if (this->m_arr[i]->getId() < this->m_k)
-		{
+		if (this->m_arr[i]->getId() < this->m_k) //If item is smaller than k add to the list
 			lst.addItem(this->m_arr[i]);
-		}
 	}
-	this->m_numOfComp += lst.getNumOfCompLst();
+	this->m_numOfComp += lst.getNumOfCompLst(); //Get number of comparisons
+	cout << lst << endl; //Print list
 	cout << endl;
-	cout << lst << endl;
 	cout << "NaivePrint: " << this->m_numOfComp << " comparisons" << endl << endl;
 	this->m_numOfComp = 0;
 }
@@ -172,13 +195,11 @@ void PrintSmallerThanKElements::BSTPrint()
 {
 	BSTree tree;
 
-	for (int i = 0; i < this->m_arrSize; ++i)
-	{
+	for (int i = 0; i < this->m_arrSize; ++i) //Go over the array and add all items into a binary search tree
 		tree.Insert(this->m_arr[i]->getId(), this->m_arr[i]);
-	}
-
-	tree.PrintTree(this->m_k);
-	this->m_numOfComp += tree.getNumOfCompBST();
+	
+	tree.PrintTreeInOrder(this->m_k); //Print tree in order until we reach K
+	this->m_numOfComp += tree.getNumOfCompBST(); //Get number of comparisons
 	cout << endl;
 	cout << "BSTPrint: " << this->m_numOfComp << " comparisons" << endl << endl;
 	this->m_numOfComp = 0;
@@ -186,20 +207,17 @@ void PrintSmallerThanKElements::BSTPrint()
 //--------------------------------------------------------------------------------//
 void PrintSmallerThanKElements::PrintBySort()
 {
-	this->quickSort(0, this->m_arrSize - 1);
+	this->quickSort(0, this->m_arrSize - 1); //Sort the array using quick sort as learned
 
-	for (int i = 0; i < this->m_arrSize; ++i)
+	for (int i = 0; i < this->m_arrSize; ++i) //Go over the array and print if smaller than K
 	{
 		++this->m_numOfComp;
 
 		if (this->m_arr[i]->getId() < this->m_k)
-		{
 			cout << *this->m_arr[i] << endl;
-		}
+		
 		else
-		{
 			break;
-		}
 	}
 	
 	cout << endl;

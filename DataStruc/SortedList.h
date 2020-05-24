@@ -3,7 +3,6 @@
 
 #include "Person.h"
 
-//List as asked in the assignment, list that sorts automatically item is added.
 class SortedList
 {
 private:

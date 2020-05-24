@@ -7,31 +7,24 @@
 //                                                                                   //
 // Input starts with n being the amount of items to be input, followed by items from //
 // type "Person", first input is a number representing id, second input is the name  //
-// and last input is k being the k'th item you want to find.                         // 
-// Output is all the functions after they found the result for k'th item, followed   //
-// by amount of comparisons each function did.                                       //
+// and last input is k, whom you want to print all smaller items from.               // 
+// Output is all the functions after they found the result for smaller than k items, //
+// followed by amount of comparisons each function did.                              //
 //***********************************************************************************//
 #include "PrintSmallerThanKElements.h"
 
 int main()
 {
 	int n; //Number of items
-	//Person* res;
 
 	cin >> n;
 
 	PrintSmallerThanKElements print(n);
 	print.readUserInput();
 	srand((unsigned)time(NULL));
-	print.NaivePrint(); // Naive (Try each element) algorithm
-	//cout << endl << *res << endl;
-	//cout << "Naive print: " << print.getNumComparisons() << " comparisons" << endl;
 
-	print.BSTPrint(); // Binary search tree algorithm
-	//cout << endl << *res << endl;
-	//cout << "Binary search tree: " << print.getNumComparisons() << " comparisons" << endl;
-
+	print.NaivePrint();  // Naive (Try each element) algorithm
+	print.BSTPrint();    // Binary search tree algorithm
 	print.PrintBySort(); // BST algorithm
-	//cout << endl << *res << endl;
-	//cout << "Quick-sort: " << print.getNumComparisons() << " comparisons" << endl;
+
 }

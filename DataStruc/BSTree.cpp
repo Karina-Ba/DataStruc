@@ -40,43 +40,6 @@ BSTreeNode* BSTree::Find(int key)
 	return nullptr; //If we haven't returned yet, return nullptr not found
 }
 //--------------------------------------------------------------------------------//
-BSTreeNode * BSTree::FindK(int index) //Find the k'th otem in the tree (index posing as k for readibility)
-{
-	BSTreeNode* temp = this->m_root;
-	int tempInd = 1; //Setting the temp index to be 1
-
-	while (temp) //While temp is not nullptr
-	{
-		if (temp->m_left) //If left child exists index of temp will be left's children + left itself + temp itself
-		{
-			tempInd = temp->m_left->m_children + 2;
-		}
-		else //Resetting temp index for next loops of no left child found
-		{
-			tempInd = 1;
-		}
-
-		if (tempInd - 1 >= index) //If the index we're looking for is in the left tree forward temp to be left child
-		{
-			temp = temp->m_left;
-		}
-
-		else if (tempInd == index) //If temp index is the index we want, return temp
-		{
-			return temp;
-		}
-
-		else //haven't found yet, search right tree but exclude the temp index from index now
-		{
-			index = index - tempInd;
-			
-			temp = temp->m_right;
-		}
-	}
-
-	return temp; //Haven't found so return is nullptr (temp because we're out of the loop when temp is nullptr)
-}
-//--------------------------------------------------------------------------------//
 void BSTree::Insert(int key, Person* data)
 { //Did not check if key exists because ID is unique
 	BSTreeNode* temp   = this->m_root;
@@ -111,8 +74,8 @@ void BSTree::Insert(int key, Person* data)
 
 	else if (key < parent->m_key) //If the key is smaller than parent's key, input as left child and add one to comparisons
 	{
-		parent->m_left = newNode;
 		++m_numOfCompBST;
+		parent->m_left = newNode;
 	}
 	 
 	else //Else key is bigger or the same as parent, add as right child and add one to comparions for previous condition
@@ -245,7 +208,7 @@ BSTreeNode * BSTree::Max(BSTreeNode * root, BSTreeNode * parent) //Find max
 	return temp;
 }
 //--------------------------------------------------------------------------------//
-void BSTree::PrintTree(int k)
+void BSTree::PrintTreeInOrder(int k)
 {
 	if (this->m_root)
 	{

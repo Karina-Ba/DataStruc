@@ -10,12 +10,12 @@
 #include <time.h>
 using namespace std;
 
+#define MAX_LEN_NAME 100
+
 // Enums declaration
 enum ErrorType
 {
 	INVALID_INPUT_ERROR = 1,
-	NO_SOLUTION_ERROR = 2,
-	EMPTY_STACK_ERROR = 3
 };
 
 #endif // __UTILS_H

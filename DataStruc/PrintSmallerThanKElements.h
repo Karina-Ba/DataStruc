@@ -17,6 +17,7 @@ class PrintSmallerThanKElements
 	int  partition(int left, int right);
 	void quickSort(int left, int right);
 	void swap(Person** a, Person** b) const;
+	void invalidInput(int index);
 
 public:
 	//C'tors
@@ -41,8 +42,6 @@ public:
 	void NaivePrint();
 	void BSTPrint();
 	void PrintBySort();
-
-
 };
 
 #endif // __PRINTSMALLERTHANKELEMENTS_

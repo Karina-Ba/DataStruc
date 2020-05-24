@@ -63,3 +63,4 @@ ostream & operator<<(ostream & os, const Person & person)
 	os << person.m_id << " " << person.m_fullName;
 	return os;
 }
+//--------------------------------------------------------------------------------//
