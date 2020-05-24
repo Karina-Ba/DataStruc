@@ -10,7 +10,7 @@
 #include <time.h>
 using namespace std;
 
-#define MAX_LEN_NAME 100
+#define MAX_LEN_NAME 128
 
 // Enums declaration
 enum ErrorType
