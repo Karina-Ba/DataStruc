@@ -24,9 +24,10 @@ public:
 	 BSTreeNode(const BSTreeNode& other) = delete;
 	 BSTreeNode(BSTreeNode&& other)      = delete;
 	~BSTreeNode();
-
-	//Generic printing functions
+	
+	//Printing method for excersie
 	void InOrder  (int k);
+	//Generic printing functions
 	void PreOrder ();
 	void PostOrder();
 };

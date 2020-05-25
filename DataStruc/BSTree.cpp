@@ -41,7 +41,7 @@ BSTreeNode* BSTree::Find(int key)
 }
 //--------------------------------------------------------------------------------//
 void BSTree::Insert(int key, Person* data)
-{ //Did not check if key exists because ID is unique
+{ //Did not check if key exists because ID is unique and checked when input received
 	BSTreeNode* temp   = this->m_root;
 	BSTreeNode* parent = this->m_root;
 	BSTreeNode* newNode;
